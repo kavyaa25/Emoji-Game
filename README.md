@@ -1,4 +1,32 @@
-In this project, let's build an **Emoji Game** by applying the concepts we have learned till now.
+# 🎮 Emoji Memory Game – React.js
+
+A fun and interactive **Emoji Memory Game** built using **React.js and CSS**, where users must click unique emojis without repeating any to win the game.
+
+---
+
+## 🚀 Live Demo
+
+*(Add your deployed link here – Vercel / Netlify)*
+
+---
+
+## 📌 Overview
+
+This is a **memory-based game** that tests the user’s ability to remember previously clicked emojis.
+The game becomes challenging as emojis **shuffle after every click**, creating a dynamic user experience.
+
+---
+
+## 🎯 Why I Built This Project
+
+* To understand **React state management**
+* To practice **event handling and game logic**
+* To build an **interactive and dynamic UI**
+* To improve **problem-solving and logic-building skills**
+
+---
+
+## 🖼️ Project Preview
 
 ### Refer to the image below:
 
@@ -8,170 +36,139 @@ In this project, let's build an **Emoji Game** by applying the concepts we have 
 </div>
 <br/>
 
-### Design Files
+---
 
-<details>
-<summary>Click to view</summary>
+## 🛠️ Tech Stack
 
-- [Extra Small (Size < 576px), Small (Size >= 576px)](https://assets.ccbp.in/frontend/content/react-js/emoji-game-sm-outputs.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Game View](https://assets.ccbp.in/frontend/content/react-js/emoji-game-lg-output-v2.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Won Game](https://assets.ccbp.in/frontend/content/react-js/emoji-game-won-game-lg-output.png)
-- [Medium (Size >= 768px), Large (Size >= 992px) and Extra Large (Size >= 1200px) - Lose Game](https://assets.ccbp.in/frontend/content/react-js/emoji-game-lose-game-lg-output.png)
+* **Frontend:** React.js (Class Components)
+* **Styling:** CSS (Flexbox, Responsive Design)
 
-</details>
+---
 
-### Set Up Instructions
+## ✨ Features
 
-<details>
-<summary>Click to view</summary>
+* 🎯 Click each emoji only once to win
+* 🔀 Emojis shuffle after every click
+* 📊 Displays **Score & Top Score**
+* 🏆 Win / ❌ Lose screen
+* 🔁 “Play Again” functionality
+* 📱 Fully responsive UI
 
-- Download dependencies by running `npm install`
-- Start up the app using `npm start`
-</details>
+---
 
-### Completion Instructions
+## ⚙️ How I Implemented This Project
 
-<details>
-<summary>Functionality to be added</summary>
-<br/>
+### 1. Component-Based Architecture
 
-The app must have the following functionalities
+* Split the app into reusable components:
 
-- Initially, the _Score_ and _Total Score_ for the current game should be **0**
-- When an **Emoji** is clicked,
+  * EmojiGame (Main logic)
+  * EmojiCard (Individual emoji)
+  * NavBar (Score display)
+  * WinOrLoseCard (Result screen)
 
-  - If it is not the same as any of the previously clicked emojis, then the _Score_ should be incremented by one
-  - If all the emojis are clicked exactly once
+---
 
-    - [Won Game](https://assets.ccbp.in/frontend/content/react-js/emoji-game-won-game-lg-output.png) view should be displayed
+### 2. State Management
 
-  - If it is the same as any of the previously clicked emojis
-    - [Lose Game](https://assets.ccbp.in/frontend/content/react-js/emoji-game-lose-game-lg-output.png) view should be displayed
-  - If the score achieved in the current game is higher than the previous scores then the _Top Score_ should be updated accordingly
+Used React state to manage:
 
-- When the _Play Again_ button is clicked, then we should be able to play the game again
-  - The _Score_ value should be reset but not the _Top Score_ value
-- The `EmojiGame` component receives the `emojisList` as a prop. It consists of a list of emoji objects with the following properties in each emoji object
+* `clickedEmojiList` → tracks clicked emojis
+* `topScore` → highest score
+* `status` → game running or ended
 
-  |    Key    | Data Type |
-  | :-------: | :-------: |
-  |    id     |  Number   |
-  | emojiName |  String   |
-  | emojiUrl  |  String   |
+---
 
-</details>
+### 3. Core Game Logic
 
-<details>
-<summary>Components Structure</summary>
+* When an emoji is clicked:
 
-<br/>
-<div style="text-align: center;">
-    <img src="https://assets.ccbp.in/frontend/content/react-js/emoji-game-game-view-component-breakdown-structure.png" alt="emoji game view component breakdown structure" style="max-width:100%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
-</div>
-<br/>
+  * If already clicked → Game Over
+  * If not → Add to list & increase score
 
-<div style="text-align: center;">
-    <img src="https://assets.ccbp.in/frontend/content/react-js/emoji-game-win-lose-component-breakdown-structure.png" alt="emoji game win or lose component breakdown structure" style="max-width:100%;box-shadow:0 2.8px 2.2px rgba(0, 0, 0, 0.12)">
-</div>
-<br/>
+---
 
-</details>
+### 4. Winning Condition
 
-<details>
-<summary>Implementation Files</summary>
-<br/>
+* If all emojis are clicked without repetition → User Wins
 
-Use these files to complete the implementation:
+---
 
-- `src/components/EmojiGame/index.js`
-- `src/components/EmojiGame/index.css`
-- `src/components/NavBar/index.js`
-- `src/components/NavBar/index.css`
-- `src/components/EmojiCard/index.js`
-- `src/components/EmojiCard/index.css`
-- `src/components/WinOrLoseCard/index.js`
-- `src/components/WinOrLoseCard/index.css`
-</details>
+### 5. Shuffle Logic
 
-### Quick Tips
+* After every click, emojis are shuffled using:
 
-<details>
-<summary>Click to view</summary>
-<br>
-
-- You can use the `cursor` CSS property to specify the mouse cursor to be displayed when pointing over an element
-
+  ```js
+  array.sort(() => Math.random() - 0.5)
   ```
-    cursor: pointer;
-  ```
+* This increases difficulty and engagement
 
-  <br/>
-   <img src="https://assets.ccbp.in/frontend/content/react-js/cursor-pointer-img.png" alt="cursor pointer" style="width:100px" />
+---
 
-- You can use the below `outline` CSS property for buttons and input elements to remove the highlighting when the elements are clicked
+### 6. Event Handling
 
-  ```
-    outline: none;
-  ```
+* Handled click events in EmojiCard
+* Passed handler function from parent component
+* Reset game using “Play Again” button
 
-</details>
+---
 
-### Important Note
+### 7. Dynamic UI Updates
 
-<details>
-<summary>Click to view</summary>
+* Score updates in real-time
+* Conditional rendering for:
 
-<br/>
+  * Game screen
+  * Win/Lose screen
 
-**The following instructions are required for the tests to pass**
+---
 
-- The emojis should have the alt as the value of the key `emojiName` from each emoji object
+### 8. UI & Responsiveness
 
-</details>
+* Used **CSS Flexbox** for layout
+* Designed a clean and responsive interface
+* Works across mobile and desktop devices
 
-### Resources
+---
 
-<details>
-<summary>Image URLs</summary>
+## 📂 Folder Structure
 
-- [https://assets.ccbp.in/frontend/react-js/game-logo-img.png](https://assets.ccbp.in/frontend/react-js/game-logo-img.png) alt should be **emoji logo**
-- [https://assets.ccbp.in/frontend/react-js/won-game-img.png](https://assets.ccbp.in/frontend/react-js/won-game-img.png)
-- [https://assets.ccbp.in/frontend/react-js/lose-game-img.png](https://assets.ccbp.in/frontend/react-js/lose-game-img.png)
+```bash
+src/
+│
+├── components/
+│   ├── EmojiGame/
+│   ├── EmojiCard/
+│   ├── NavBar/
+│   └── WinOrLoseCard/
+│
+├── App.js
+└── index.js
+```
 
-</details>
+---
 
-<details>
-<summary>Colors</summary>
+## 🧠 Key Learnings
 
-<br/>
+* React **state management**
+* Handling **user interactions**
+* Implementing **game logic**
+* **Component-based architecture**
+* Building **responsive UI**
 
-<div style="background-color: #6a59ff ; width: 150px; padding: 10px; color: white">Hex: #6a59ff</div>
-<div style="background-color: #ffffff ; width: 150px; padding: 10px; color: black">Hex: #ffffff</div>
-<div style="background-color: #3d3d3d ; width: 150px; padding: 10px; color: white">Hex: #3d3d3d</div>
+---
 
-#### Background Colors
+## 📈 Future Improvements
 
-<div style="background-color: #9796f0 ; width: 150px; padding: 10px; color: white">Hex: #9796f0</div>
-<div style="background-color: #fbc7d4 ; width: 150px; padding: 10px; color: black">Hex: #fbc7d4</div>
-<div style="background-color: #ffffff33 ; width: 150px; padding: 10px; color: black">Hex: #ffffff33</div>
-<div style="background-color: #ffce27 ; width: 150px; padding: 10px; color: black">Hex: #ffce27</div>
+* Add timer ⏱️
+* Add difficulty levels 🎯
+* Add sound effects 🔊
+* Convert to Hooks ⚛️
 
-#### Border Colors
+---
 
-<div style="background-color: #ffffff30 ; width: 150px; padding: 10px; color: black">Hex: #ffffff30</div>
+## 📌 Final Summary
 
-</details>
+**This Emoji Memory Game demonstrates React state management, event handling, and dynamic UI updates by building an interactive and engaging game.**
 
-<details>
-<summary>Font-families</summary>
-
-- Roboto
-
-</details>
-
-> ### _Things to Keep in Mind_
->
-> - All components you implement should go in the `src/components` directory.
-> - Don't change the component folder names as those are the files being imported into the tests.
-> - **Do not remove the pre-filled code**
-> - Want to quickly review some of the concepts you’ve been learning? Take a look at the Cheat Sheets.
+---
